@@ -1,6 +1,8 @@
 #include "Player.h"
 #include <iostream>
 
+using namespace std;
+
 Player::Player(string name)
 {
     this->m_life = 100;

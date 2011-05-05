@@ -3,15 +3,13 @@
 
 #include <string>
 
-using namespace std;
-
 class Player
 {
     public:
-        Player(string name);
+        Player(std::string name);
         virtual ~Player();
         int getLife();
-        string getName();
+        std::string getName();
         void lose();
         bool isDead();
         void pichenette(Player *victime);
@@ -19,7 +17,7 @@ class Player
     protected:
     private:
         int m_life;
-        string m_name;
+        std::string m_name;
 };
 
 #endif // PLAYER_H
