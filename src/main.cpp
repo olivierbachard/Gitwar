@@ -49,6 +49,9 @@ int main()
     cout << "**** " << winner->getName() << " gagne le combat ! ****" << endl;
     loser->lose();
 
+    delete olivier, olivier = NULL;
+    delete sylvain, sylvain = NULL;
+
     return 0;
 
 }
