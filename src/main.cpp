@@ -16,10 +16,6 @@ int main()
     Player *winner;
     Player *loser;
 
-    vector<Player*> players;
-    players.push_back(olivier);
-    players.push_back(sylvain);
-
     while(true)
     {
         olivier->pichenette(sylvain);
