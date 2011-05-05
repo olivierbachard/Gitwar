@@ -1,5 +1,4 @@
 #include <iostream>
-#include <ctime>
 #include <vector>
 #include <string>
 
@@ -45,12 +44,6 @@ int main()
             cout << "HP de Olivier: " << olivier->getLife() << endl;
             cout << endl;
         }
-
-
-        struct timespec req;
-        req.tv_sec = 0;
-        req.tv_nsec = 400000000L;
-        nanosleep(&req, (struct timespec *)NULL);
     }
 
     cout << "**** " << winner->getName() << " gagne le combat ! ****" << endl;
