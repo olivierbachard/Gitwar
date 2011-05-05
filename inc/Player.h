@@ -13,6 +13,7 @@ class Player
         void lose();
         bool isDead();
         void pichenette(Player *victime);
+        void allerANewYork(void);
 
     protected:
     private:

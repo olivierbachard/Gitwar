@@ -18,7 +18,7 @@ int main()
 
     while(true)
     {
-        olivier->pichenette(sylvain);
+        olivier->allerANewYork();
 
         if(sylvain->isDead())
         {

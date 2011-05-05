@@ -46,3 +46,17 @@ void Player::pichenette(Player *victime)
     victime->m_life -= 2;
 
 }
+
+void Player::allerANewYork(void)
+{
+    if (m_name == "Olivier")
+    {
+        cout << m_name << " fait la boulette d'aller à New-York. Il le paye le prix fort !" << endl;
+        m_life = 0;
+    }
+    else
+    {
+        cout << m_name << " passe quelques jours à New-York. Il se repose bien." << endl;
+        m_life = 100;
+    }
+}
