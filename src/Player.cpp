@@ -1,4 +1,4 @@
-#include "../include/Player.h"
+#include "Player.h"
 #include <iostream>
 
 Player::Player(string name)

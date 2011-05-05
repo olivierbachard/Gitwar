@@ -2,7 +2,8 @@
 #include <time.h>
 #include <vector>
 #include <string>
-#include "include/Player.h"
+
+#include "Player.h"
 
 using namespace std;
 
@@ -46,7 +47,7 @@ int main()
         }
 
 
-        struct timespec req = {0};
+        struct timespec req;
         req.tv_sec = 0;
         req.tv_nsec = 400000000L;
         nanosleep(&req, (struct timespec *)NULL);
