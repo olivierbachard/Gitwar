@@ -3,6 +3,8 @@
 #include <string>
 
 #include "Player.h"
+#include "Object.h"
+
 
 using namespace std;
 
@@ -15,10 +17,17 @@ int main()
     Player *sylvain = new Player("Sylvain");
     Player *winner;
     Player *loser;
-
+    Object *potionDInvincibilite = new Object("Potion d'invincibilité");
+	
     while(true)
-    {
-        olivier->allerANewYork();
+    {	
+	olivier->acquerirObjet(*potionDInvincibilite);
+	olivier->utiliserObjet("Potion d'invincibilité");
+	olivier->allerANewYork();
+
+	while(sylvain->getLife() > 0) {
+		olivier->attaqueZatniktel(sylvain);
+	}
 
         if(sylvain->isDead())
         {
@@ -40,13 +49,16 @@ int main()
             cout << "HP de Olivier: " << olivier->getLife() << endl;
             cout << endl;
         }
+
     }
+
 
     cout << "**** " << winner->getName() << " gagne le combat ! ****" << endl;
     loser->lose();
 
     delete olivier, olivier = NULL;
     delete sylvain, sylvain = NULL;
+    delete potionDInvincibilite, potionDInvincibilite = NULL;
 
     return 0;
 

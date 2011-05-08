@@ -19,7 +19,7 @@ INC=inc/
 all: $(BIN)gitwar
 
 ##### Programme #####
-$(BIN)gitwar: $(OBJ)main.o $(OBJ)Player.o
+$(BIN)gitwar: $(OBJ)main.o $(OBJ)Player.o $(OBJ)Object.o
 	@echo [LD] $@
 	@$(LD) $^ -o $@ $(LDFLAGS)
 
@@ -29,8 +29,10 @@ $(OBJ)%.o: $(SRC)%.cpp Makefile
 	@$(CXX) -c $< -o $@ $(CPPFLAGS) -I$(INC)
 
 ##### Dependances specifiques #####
-$(SRC)main.o:$(INC)Player.h
-$(SRC)Player.o:$(INC)Player.h
+$(SRC)main.o:$(INC)Player.h $(INC)Object.h
+$(SRC)Player.o:$(INC)Player.h $(INC)Object.h
+$(SRC)Object.o:$(INC)Object.h
+
 
 ##### Utilitaires #####
 .PNOHY: clean mrproper

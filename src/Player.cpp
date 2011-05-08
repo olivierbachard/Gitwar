@@ -40,6 +40,37 @@ bool Player::isDead()
     }
 }
 
+void Player::attaqueZatniktel(Player *victime)
+{
+	cout << this->m_name << " envoie un coup de Zat'nik'tel à " << victime->m_name << "!" << endl;
+    	victime->m_life -= 5;
+}
+
+void Player::acquerirObjet(Object objet)
+{
+	m_objets.push_back(objet);
+}
+
+void Player::utiliserObjet(string objet)
+{
+	bool ok = false;
+	for(unsigned int i = 0; i < m_objets.size(); i++)
+	{
+		if (m_objets[i].getName() == objet) {
+			if(m_objets.at(i).setUsed(true)) {
+				ok = true;
+				cout << m_name << " utilise l'objet " << m_objets[i].getName() << endl;
+				break;
+			}
+		}
+	}
+
+	if(!ok) {
+		cout << "Oula tu essaie de tricher, c'est pas bien! Tu ne peux pas utiliser cet objet" << endl;
+	}
+	
+}
+
 void Player::pichenette(Player *victime)
 {
     cout << this->m_name << " met une grosse pichenette à " << victime->m_name << "!" << endl;
@@ -51,8 +82,20 @@ void Player::allerANewYork(void)
 {
     if (m_name == "Olivier")
     {
-        cout << m_name << " fait la boulette d'aller à New-York. Il le paye le prix fort !" << endl;
-        m_life = 0;
+	cout << m_name << " fait la boulette d'aller à New-York. Il le paye le prix fort !" << endl;
+
+	for(unsigned int i=0; i<m_objets.size();i++)
+	{
+		if( (m_objets[i].getName() == "Potion d'invincibilité") && m_objets[i].getUsed() )
+		{
+			cout << "Cependant, " << m_name << " est invincible, il ne craint ni personne, pas même un voyage à New York !" << endl;
+			break;
+		}
+		else
+		{
+        		m_life = 0;
+		}
+	}
     }
     else
     {
