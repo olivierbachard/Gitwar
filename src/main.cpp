@@ -17,17 +17,17 @@ int main()
     Player *sylvain = new Player("Sylvain");
     Player *winner;
     Player *loser;
-    Object *potionDInvincibilite = new Object("Potion d'invincibilité");
-	
-    while(true)
-    {	
-	olivier->acquerirObjet(*potionDInvincibilite);
-	olivier->utiliserObjet("Potion d'invincibilité");
-	olivier->allerANewYork();
+    Object potionDInvincibilite("Potion d'invincibilité");
 
-	while(sylvain->getLife() > 0) {
-		olivier->attaqueZatniktel(sylvain);
-	}
+    while(true)
+    {
+        olivier->acquerirObjet(potionDInvincibilite);
+        olivier->utiliserObjet("Potion d'invincibilité");
+        olivier->allerANewYork();
+
+        while(sylvain->getLife() > 0) {
+            olivier->attaqueZatniktel(sylvain);
+        }
 
         if(sylvain->isDead())
         {
@@ -49,7 +49,6 @@ int main()
             cout << "HP de Olivier: " << olivier->getLife() << endl;
             cout << endl;
         }
-
     }
 
 
@@ -58,7 +57,6 @@ int main()
 
     delete olivier, olivier = NULL;
     delete sylvain, sylvain = NULL;
-    delete potionDInvincibilite, potionDInvincibilite = NULL;
 
     return 0;
 
