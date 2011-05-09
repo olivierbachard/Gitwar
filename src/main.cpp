@@ -19,39 +19,36 @@ int main()
     Player *loser;
     Object potionDInvincibilite("Potion d'invincibilité");
 
-    while(true)
+    while(!sylvain->isDead() && !olivier->isDead())
     {
         olivier->acquerirObjet(potionDInvincibilite);
         olivier->utiliserObjet("Potion d'invincibilité");
         olivier->allerANewYork();
+        olivier->attaqueZatniktel(sylvain);
 
-        while(sylvain->getLife() > 0) {
-            olivier->attaqueZatniktel(sylvain);
+        if (!olivier->isDead() && sylvain->isPureEnergy())
+        {
+            cout << "Olivier se retrouve tout seul comme un con." << endl;
+            olivier->deprimer();
         }
 
-        if(sylvain->isDead())
-        {
-            cout << "Sylvain est mort...\n" << endl;
-            winner = olivier;
-            loser = sylvain;
-            break;
-        }
-        else if(olivier->isDead())
-        {
-            cout << "Olivier est mort...\n" << endl;
-            winner = sylvain;
-            loser = olivier;
-            break;
-        }
-        else
-        {
-            cout << "HP de Sylvain: " << sylvain->getLife() << endl;
-            cout << "HP de Olivier: " << olivier->getLife() << endl;
-            cout << endl;
-        }
+        cout << "HP de Sylvain: " << sylvain->getLife() << endl;
+        cout << "HP de Olivier: " << olivier->getLife() << endl;
+        cout << endl;
     }
 
+    if(sylvain->isDead())
+    {
+        winner = olivier;
+        loser = sylvain;
+    }
+    else if(olivier->isDead())
+    {
+        winner = sylvain;
+        loser = olivier;
+    }
 
+    cout << loser->getName() << " est mort...\n" << endl;
     cout << "**** " << winner->getName() << " gagne le combat ! ****" << endl;
     loser->lose();
 
